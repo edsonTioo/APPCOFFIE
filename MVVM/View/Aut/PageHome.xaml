@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APPCOFFIE.MVVM.View.Aut.PageHome"
+             Title="PageHome">
+    <Grid  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"  />
+            <RowDefinition  Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Profile Section -->
+        <Frame BackgroundColor="White" HasShadow="True" CornerRadius="0" Padding="16" Margin="0,0,0,5">
+            <HorizontalStackLayout Spacing="15">
+                <Image Source="dotnet_bot.png" WidthRequest="60" HeightRequest="60" Aspect="AspectFill" 
+         HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Label Text="Anderson " FontFamily="Roboto-Black" HorizontalTextAlignment="Center" Margin="60,0,60,0" VerticalTextAlignment="Center" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+
+                </VerticalStackLayout>
+
+
+            </HorizontalStackLayout>
+        </Frame>
+
+
+
+
+
+        <!-- ScrollView para la cuadrícula de botones -->
+        <ScrollView Grid.Row="1" BackgroundColor="Pink">
+            <Grid ColumnSpacing="10" RowSpacing="16" Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Primera fila de botones -->
+                <Frame Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" HasShadow="True" CornerRadius="15"  Padding="8" BackgroundColor="White" x:Name="frameMesas">
+                    <StackLayout>
+                        <ImageButton Source="icon_mesa.png"    HorizontalOptions="Center"  VerticalOptions="Center"></ImageButton>
+                        <Label Text="Gestión de Mesas" FontFamily="Roboto-Black"  TextColor="Black" FontSize="Medium"  HorizontalOptions="Center" FontAttributes="Bold"/>
+                    </StackLayout>
+                </Frame>
+                <Frame x:Name="framePagos" Grid.Row="2"  Grid.RowSpan="4" Grid.Column="1" CornerRadius="15" HasShadow="True" Padding="8" BackgroundColor="White">
+                    <StackLayout>
+                        <ImageButton   HeightRequest="100"  Source="icon_money.png"></ImageButton>
+                        <Label Text="Gestión Empleado" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" FontFamily="Roboto-Black" TextColor="Black" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="frameInventario" Grid.Row="2" Grid.Column="0" Grid.RowSpan="4" CornerRadius="15" HasShadow="True" Padding="8" BackgroundColor="White">
+                    <StackLayout>
+                        <ImageButton Source="icon_inventario.png"   ></ImageButton>
+                        <Label Text="Inventario" FontFamily="Roboto-Black" TextColor="Black" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Center"/>
+
+                    </StackLayout>
+                </Frame>
+                <Frame x:Name="frameReportes" Grid.Row="6" Grid.ColumnSpan="2" Grid.Column="0" CornerRadius="15" HasShadow="True" Padding="8" BackgroundColor="White">
+                    <StackLayout>
+                        <ImageButton Source="icon_reportes.png" ></ImageButton>
+                        <Label Text="Reportes" FontFamily="Roboto-Black" FontAttributes="Bold" TextColor="Black" FontSize="Medium" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+
+
+
+            </Grid>
+        </ScrollView>
+
+        <!-- Barra inferior -->
+        <ContentView  Grid.Row="3" Padding="8" HeightRequest="82" BackgroundColor="Pink">
+            <Grid>
+                <Frame Padding="0" HasShadow="True" >
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Botón Home -->
+                        <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ImageButton x:Name="homeButton"  Source="home_icon.png" HeightRequest="32"
+                              HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Home" FontAttributes="Bold" FontFamily="Roboto-Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                        </StackLayout>
+
+                        <!-- Botón Acerca de -->
+                        <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ImageButton x:Name="aboutButton" Source="acercade_icon.png" HeightRequest="32"
+                              HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Acerca de" FontFamily="Roboto-Black" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                        </StackLayout>
+
+                        <!-- Botón Perfil -->
+                        <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ImageButton x:Name="userButton" Source="perfil_icon.png" HeightRequest="32"
+                              HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Perfil" FontFamily="Roboto-Black"  HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ContentView>
+
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APPCOFFIE.MVVM.View.EditCliente"
+             Title="EditCliente">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView Grid.Row="1" Grid.ColumnSpan="3" Padding="8" Margin="10" BackgroundColor="White">
+              
+                <VerticalStackLayout Padding="20" Spacing="15">
+                    <Label Text="Actualizar Cliente" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center" 
+                           TextColor="Black"
+                           FontFamily="Roboto-Black"/>
+                    <Label Text="Escriba el Nombre Completo del Cliente" 
+                           FontAttributes="Bold" 
+                           FontFamily="Roboto-Black" 
+                           CharacterSpacing="1" />
+                    <Entry Placeholder="Nombre Completo" 
+                           Text="{Binding Cliente.Nombre}" 
+                           Keyboard="Text"
+                           MaxLength="50" 
+                           PlaceholderColor="Gray"
+                           TextColor="Black" />
+                    <Label Text="Escriba la Dirección del Cliente" 
+                           FontAttributes="Bold" 
+                           FontFamily="Roboto-Black" 
+                           CharacterSpacing="1" />
+                    <Entry Placeholder="Escriba la Dirección" 
+                           Text="{Binding Cliente.Direccion}" 
+                           Keyboard="Text"
+                           MaxLength="50" 
+                           PlaceholderColor="Gray"
+                           TextColor="Black" />
+
+                    <Label Text="Escriba la Cédula del Cliente" 
+                           FontFamily="Roboto-Black" 
+                           CharacterSpacing="1"/>
+                    <Entry Placeholder="Cédula" 
+                           Text="{Binding Cliente.Cedula}" 
+                           MaxLength="16" 
+                           PlaceholderColor="Gray"
+                          TextColor="Black"/>
+                    <Label Text="Escriba el Numero de Telefono del Cliente" 
+                           FontFamily="Roboto-Black" 
+                           CharacterSpacing="1"/>
+                    <Entry Placeholder="Teléfono" 
+                           Text="{Binding Cliente.Telefono}" 
+                           Keyboard="Telephone" 
+                           MaxLength="10" 
+                           PlaceholderColor="Gray"
+                           TextColor="Black"/>
+                    <Label Text="Escriba la Fecha de la Reservación" 
+                           FontFamily="Roboto-Black" 
+                           CharacterSpacing="1"/>
+                    <DatePicker Date="{Binding Cliente.Fecha}" 
+                                Format="dd/MM/yyyy"
+                                TextColor="Black"
+                                BackgroundColor="White" 
+                                Margin="0,5,0,20"/>
+                    <Label Text="Seleccione el Estado del Cliente" 
+                           FontFamily="Roboto-Black" 
+                           CharacterSpacing="1"/>
+                    <Picker x:Name="EstadoPicker"
+                                Title="Estado" 
+                                SelectedItem="{Binding Cliente.Estado}" 
+                                TitleColor="Gray" 
+                                TextColor="Black">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Activo</x:String>
+                                <x:String>Inactivo</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="Hora de Inicio de la Reservación"
+                           TextColor="Black" 
+                           FontSize="Medium" 
+                           Margin="0,20,0,0" 
+                           FontFamily="Roboto-Black"/>
+                    <TimePicker Time="{Binding Cliente.HoraReservacion}"
+                                Format="t"
+                                TextColor="Black"
+                                BackgroundColor="White" 
+                                Margin="0,5,0,20" />
+                    <Label Text="Hora de Finalización de la Reservación"
+                           TextColor="Black" 
+                           FontSize="Medium" 
+                           FontFamily="Roboto-Black"/>
+                    <TimePicker Time="{Binding Cliente.HoraFinanReservacion}"
+                                Format="t"
+                                TextColor="Black"
+                                BackgroundColor="White" 
+                                Margin="0,5,0,20"/>
+                    <Button Text="Actualizar Cliente" 
+                            Command="{Binding CommandoUpdate}" 
+                            BackgroundColor="#4CAF50" 
+                            TextColor="White" 
+                            CornerRadius="10" 
+                            HeightRequest="50"/>
+                    <Button Text="Cancelar" 
+                            Command="{Binding CancelarCommand}" 
+                            BackgroundColor="#F44336" 
+                            TextColor="White" 
+                            CornerRadius="10" 
+                            HeightRequest="50"/>
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <ContentView Grid.Row="2" Grid.ColumnSpan="3" Padding="8" HeightRequest="82" BackgroundColor="Pink">
+                <Grid>
+                    <Frame Padding="0" HasShadow="True">
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="homeButton" Source="home_icon.png" HeightRequest="32" />
+                                <Label Text="Home" FontAttributes="Bold" FontFamily="Roboto-Black" FontSize="12"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="aboutButton" Source="acercade_icon.png" HeightRequest="32" />
+                                <Label Text="Acerca de" FontFamily="Roboto-Black" FontAttributes="Bold" FontSize="12"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="userButton" Source="perfil_icon.png" HeightRequest="32" />
+                                <Label Text="Perfil" FontFamily="Roboto-Black" FontSize="12"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

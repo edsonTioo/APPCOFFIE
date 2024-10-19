@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APPCOFFIE.MVVM.View.Producto.CrearProducto"
+             Title="Crear Producto" BackgroundColor="Pink">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Frame Grid.Row="1" Grid.ColumnSpan="3" Margin="15,15,20,1">
+
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <VerticalStackLayout Grid.ColumnSpan="3" Padding="15">
+
+                        <!-- Campos de entrada del formulario -->
+                        <Label Text="Nombre del Producto:" FontSize="Body" FontFamily="Roboto-Black" Margin="1" Grid.Column="0" VerticalOptions="Center" />
+                        <Entry Placeholder="Introduce el nombre" Text="{Binding Producto}" TextColor="Black" PlaceholderColor="Gray" WidthRequest="300" Grid.Column="1" Margin="12" />
+
+                        <Label Text="Descripcion:" FontSize="Body" FontFamily="Roboto-Black" Margin="1" Grid.Column="0" VerticalOptions="Center" />
+                        <Entry Placeholder="Introduce la descripción" Text="{Binding Descripcion}" TextColor="Black" PlaceholderColor="Gray" WidthRequest="300" Grid.Column="1" Margin="12" />
+
+                        <Label Text="Precio de Venta:" FontSize="Body" FontFamily="Roboto-Black" Margin="1" Grid.Column="0" VerticalOptions="Center" />
+                        <Entry Placeholder="Introduce el precio" Text="{Binding Precio_venta}" TextColor="Black" PlaceholderColor="Gray" WidthRequest="250" Grid.Column="1" Keyboard="Numeric" Margin="12" />
+
+                        <!-- Picker con las opciones -->
+                        <Label Text="Seleccione una Categoria:" FontSize="Body" FontFamily="Roboto-Black" Margin="1" Grid.Column="0" VerticalOptions="Center" />
+                        <Picker x:Name="EstadoPicker" Title="Categoria" Margin="12" SelectedItem="{Binding Categoria}" TitleColor="Gray" TextColor="Black">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Bebida</x:String>
+                                    <x:String>Postre</x:String>
+                                    <x:String>Producto</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+
+                        <!-- Botones Cancelar, Guardar y Regresar -->
+                        <Button Text="Cancelar"
+                            BackgroundColor="Red"
+                            TextColor="White"
+                            FontSize="Medium"
+                            CornerRadius="20"
+                            HeightRequest="50"
+                            WidthRequest="250"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Margin="5" />
+
+                        <Button Text="Guardar"
+                            BackgroundColor="Green"
+                            TextColor="White"
+                            FontSize="Medium"
+                                Command="{Binding SaveCommand}"
+                            CornerRadius="20"
+                            HeightRequest="50"
+                            WidthRequest="250"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Margin="5" />
+
+                        <Button Text="Regresar"
+                            BackgroundColor="Gray"
+                            TextColor="White"
+                            FontSize="Medium"
+                            CornerRadius="20"
+                            HeightRequest="50"
+                            WidthRequest="250"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Margin="12" />
+
+                    </VerticalStackLayout>
+
+                </Grid>
+            </StackLayout>
+        </Frame>
+
+
+        <!-- Barra inferior -->
+        <ContentView  Grid.Row="2" Grid.ColumnSpan="3" Padding="8" Margin="10,1,15,2" HeightRequest="82" BackgroundColor="Pink">
+            <Grid>
+                <Frame Padding="0" HasShadow="True" >
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Botón Home -->
+                        <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ImageButton x:Name="homeButton"   Source="home_icon.png" HeightRequest="32"
+                              HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Home" FontAttributes="Bold" FontFamily="Roboto-Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                        </StackLayout>
+
+                        <!-- Botón Acerca de -->
+                        <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ImageButton x:Name="aboutButton" Source="acercade_icon.png" HeightRequest="32"
+                              HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Acerca de" FontFamily="Roboto-Black" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                        </StackLayout>
+
+                        <!-- Botón Perfil -->
+                        <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ImageButton x:Name="userButton"  Source="perfil_icon.png" HeightRequest="32"
+                              HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Perfil" FontFamily="Roboto-Black"  HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ContentView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,103 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APPCOFFIE.MVVM.View.Producto.EditProducto">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView Grid.Row="1" Grid.ColumnSpan="3" Padding="8" Margin="10" BackgroundColor="White">
+                <VerticalStackLayout Padding="20" Spacing="15">
+                    <Label Text="Actualizar Inventario" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" 
+                       TextColor="Black"
+                       FontFamily="Roboto-Black"/>
+
+                    <Label Text="Escriba el Nombre Completo del Producto" 
+                       FontAttributes="Bold" 
+                       FontFamily="Roboto-Black" 
+                       CharacterSpacing="1" />
+                    <Entry Placeholder="Nombre Completo" 
+                       Text="{Binding Ventarioss.Producto}" 
+                       Keyboard="Text"
+                       MaxLength="50" 
+                       PlaceholderColor="Gray"
+                       TextColor="Black" />
+
+                    <Label Text="Descripción" 
+                       FontAttributes="Bold" 
+                       FontFamily="Roboto-Black" 
+                       CharacterSpacing="1" />
+                    <Entry Placeholder="Escriba la Descripción" 
+                       Text="{Binding Ventarioss.Descripcion}" 
+                       Keyboard="Text"
+                       MaxLength="50" 
+                       PlaceholderColor="Gray"
+                       TextColor="Black" />
+
+                    <Entry Placeholder="Precio de Venta" 
+                       Text="{Binding Ventarioss.Precio_venta}" 
+                       Keyboard="Telephone" 
+                       MaxLength="10" 
+                       PlaceholderColor="Gray"
+                       TextColor="Black"/>
+
+                    <Button Text="Actualizar Producto" 
+                        Command="{Binding CommandoUpdate}" 
+                        BackgroundColor="#4CAF50" 
+                        TextColor="White" 
+                        CornerRadius="10" 
+                        HeightRequest="50"/>
+
+                    <Button Text="Cancelar" 
+                        Command="{Binding CancelarCommand}" 
+                        BackgroundColor="#F44336" 
+                        TextColor="White" 
+                        CornerRadius="10" 
+                        HeightRequest="50"/>
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <ContentView Grid.Row="2" Grid.ColumnSpan="3" Padding="8" HeightRequest="82" BackgroundColor="Pink">
+                <Grid>
+                    <Frame Padding="0" HasShadow="True">
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="homeButton" Source="home_icon.png" HeightRequest="32" />
+                                <Label Text="Home" FontAttributes="Bold" FontFamily="Roboto-Black" FontSize="12"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="aboutButton" Source="acercade_icon.png" HeightRequest="32" />
+                                <Label Text="Acerca de" FontFamily="Roboto-Black" FontAttributes="Bold" FontSize="12"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="userButton" Source="perfil_icon.png" HeightRequest="32" />
+                                <Label Text="Perfil" FontFamily="Roboto-Black" FontSize="12"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
