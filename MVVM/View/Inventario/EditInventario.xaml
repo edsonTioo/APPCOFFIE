@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="APPCOFFIE.MVVM.View.Inventario.EditInventaria"
-             Title="EditInventaria">
+             Title="Editar Inventario">
 <ContentPage.Content>
     <Grid>
         <Grid.RowDefinitions>
@@ -53,7 +53,7 @@
                            PlaceholderColor="Gray"
                            TextColor="Black"/>
                     <Button Text="Actualizar producto" 
-                            Command="{Binding CommandoUpdate}" 
+                            Command="{Binding IcommandUpdate}" 
                             BackgroundColor="#4CAF50" 
                             TextColor="White" 
                             CornerRadius="10" 

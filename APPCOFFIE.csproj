@@ -92,6 +92,15 @@
 	  <MauiXaml Update="MVVM\View\Cliente\EditCliente.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="MVVM\View\Empleado\CrearEmpleado.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MVVM\View\Empleado\EditEmpleado.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MVVM\View\Empleado\HomeEmpleados.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="MVVM\View\Inventario\CrearInventario.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

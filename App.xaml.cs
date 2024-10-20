@@ -10,7 +10,7 @@ namespace APPCOFFIE
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new HomeProducto());
+            MainPage = new NavigationPage(new HomeInventario());
         }
     }
 }

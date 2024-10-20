@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="APPCOFFIE.MVVM.View.Inventario.HomeInventario"
               x:Name="InventarioPage"
-             Title="HomeInventario">
+               Title="Inventario"
+             BackgroundColor="Pink">
     <ContentPage.Content>
         <Grid>
             <!-- Definición de filas para el Grid -->
@@ -65,7 +66,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Button  Text="Agregar Nuevo Producto" Command="{Binding CreateCommand}" FontFamily="Roboto-Blacl=k"  Margin="10,5,15,15" CornerRadius="15" BackgroundColor="#51B01A" CharacterSpacing="1" />
+                    <Button  Text="Agregar Nuevo Producto de Conteo" Command="{Binding CreateCommand}" FontFamily="Roboto-Blacl=k"  Margin="10,5,15,15" CornerRadius="15" BackgroundColor="#51B01A" CharacterSpacing="1" />
 
                     <Frame Padding="0" HasShadow="True" HeightRequest="82" Grid.Row="1"  Margin="10,0,15,20">
                         <Grid Padding="10">

@@ -48,12 +48,7 @@ namespace APPCOFFIE.MVVM.ViewModel
                     if (reponse.IsSuccessStatusCode)
                     {
                         var jsonReponse = await reponse.Content.ReadAsStringAsync();
-                        ventarioss = JsonSerializer.Deserialize<Productos>(jsonReponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });// aqui en jsonReponse}
-                                                                                                                                                          // Asignar los valores a las propiedades observables
-                        //producto = ventarioss.Producto;
-                        //descripcion = ventarioss.Descripcion;
-                        //precio_venta = ventarioss.Precio_venta;
-                        //categoria = ventarioss.Categoria;
+                        ventarioss = JsonSerializer.Deserialize<Productos>(jsonReponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
                     }
                     else
                     {
@@ -110,7 +105,7 @@ namespace APPCOFFIE.MVVM.ViewModel
                     }
 
 
-                    await App.Current.MainPage.DisplayAlert("Éxito", "Porducto actualizado correctamente.", "OK");
+                    await App.Current.MainPage.DisplayAlert("Éxito", "Producto actualizado correctamente.", "OK");
 
                     // Navega de regreso a la página ClienteHome
                     await _page.Navigation.PopAsync(); // Vuelve a la página anterior
