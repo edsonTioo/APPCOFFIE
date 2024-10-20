@@ -2,11 +2,182 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="APPCOFFIE.MVVM.View.Empleado.CrearEmpleado"
-             Title="CrearEmpleado">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Crear Empleado">
+    <ContentPage.Content>
+        <Grid>
+            <!-- Definición de filas para el Grid -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ScrollView Grid.Row="1" Grid.ColumnSpan="3" Padding="8" Margin="10" BackgroundColor="White">
+                <VerticalStackLayout Padding="20" Spacing="15">
+
+                    <!-- Título -->
+                    <Label Text="Registrar Nuevo Empleado" 
+                      FontSize="24" 
+                      FontAttributes="Bold" 
+                      HorizontalOptions="Center" 
+                      TextColor="Black"
+                               FontFamily="Robot-Black"/>
+
+                    <!-- Campo para Nombre del Cliente -->
+                    <Label  Text="Escriba el Nombre Completo del Cliente" FontAttributes="Bold"  CharacterSpacing="1" />
+                    <Entry Placeholder="Nombre Completo del Empleado" 
+                          Text="{Binding Nombre}" 
+                          Keyboard="Text"
+                          MaxLength="25" 
+                          PlaceholderColor="Gray"
+                          TextColor="Black"
+                                  />
+
+                    <!-- Campo para Nombre del Cliente -->
+                    <Label  Text="Escriba el Correo del Empleado" FontAttributes="Bold"  CharacterSpacing="1" />
+                    <Entry Placeholder="Escriba el Correo" 
+                          Text="{Binding Correo}" 
+                          Keyboard="Text"
+                          MaxLength="50" 
+                          PlaceholderColor="Gray"
+                          TextColor="Black"
+                                  />
+
+                    <Label  Text="Escriba la Contraseña" FontAttributes="Bold"  CharacterSpacing="1" />
+                    <Entry Placeholder="Escriba la contraseña" 
+                          Text="{Binding Password}" 
+                          Keyboard="Text"
+                          MaxLength="25" 
+                          PlaceholderColor="Gray"
+                          TextColor="Black"
+                                  />
+
+                    <!-- Campo para Cédula -->
+                    <Label Text="Escriba la Cédula del Empleado"  CharacterSpacing="1"/>
+                    <Entry Placeholder="Cédula" 
+                         Text="{Binding Cedula}" 
+                         MaxLength="14" 
+                         PlaceholderColor="Gray"
+                         TextColor="Black"/>
+
+                    <Label Text="Escriba la Dirección del Empleado"  CharacterSpacing="1"/>
+                    <Entry Placeholder="Direccion" 
+                         Text="{Binding Direccion}" 
+                         MaxLength="50" 
+                         PlaceholderColor="Gray"
+                         TextColor="Black"/>
+
+                    <!-- Campo para Teléfono -->
+                    <Label Text="Escriba el Numero de Telefono del Empleado"  CharacterSpacing="1"/>
+                    <Entry Placeholder="Teléfono" 
+                          Text="{Binding Telefono}" 
+                          Keyboard="Telephone" 
+                          MaxLength="8" 
+                          PlaceholderColor="Gray"
+                          TextColor="Black"/>
+                    
+                    <Label Text="Escriba el pago del Empleado"  CharacterSpacing="1"/>
+                    <Entry Placeholder="pago" 
+                          Text="{Binding Pago}" 
+                          Keyboard="Telephone" 
+                          MaxLength="10" 
+                          PlaceholderColor="Gray"
+                          TextColor="Black"/>
+
+                    <Label Text="Escriba la Fecha de la Reservación"  CharacterSpacing="1"/>
+                    <DatePicker Date="{Binding FechaNacimiento}"
+                           Format="dd/MM/yyyy"
+                           TextColor="Black"
+                           BackgroundColor="White" 
+                           Margin="0,5,0,20"/>
+
+
+                    <Label  Text="Seleccione el Estado del Empleado"  CharacterSpacing="1"/>
+                    <Picker x:Name="EstadoPicker"
+                    Title="Estado" 
+                    SelectedItem="{Binding Estado}" 
+                    TitleColor="Gray" 
+                    TextColor="Black">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Activo</x:String>
+                                <x:String>Inactivo</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Label  Text="Seleccione el Rol del Empleado"  CharacterSpacing="1"/>
+                    <Picker x:Name="RolPicker"
+                    Title="Rol" 
+                    SelectedItem="{Binding Rol}" 
+                    TitleColor="Gray" 
+                    TextColor="Black">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Admin</x:String>
+                                <x:String>Cocinero</x:String>
+                                <x:String>Mesero</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+
+                    <Button Text="Guardar Empleado" 
+                   Command="{Binding SaveCommand}" 
+                   BackgroundColor="#4CAF50" 
+                   TextColor="White" 
+                   CornerRadius="10" 
+                   HeightRequest="50"/>
+
+
+                    <Button Text="Cancelar" 
+                       Command="{Binding CancelarCommand}" 
+                       BackgroundColor="#F44336" 
+                       TextColor="White" 
+                       CornerRadius="10" 
+                       HeightRequest="50"/>
+
+                </VerticalStackLayout>
+            </ScrollView>
+            <ContentView  Grid.Row="2" Grid.ColumnSpan="3" Padding="8" HeightRequest="82" BackgroundColor="Pink">
+                <Grid>
+                    <Frame Padding="0" HasShadow="True" >
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Botón Home -->
+                            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="homeButton"   Source="home_icon.png" HeightRequest="32"
+                          HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="Home" FontAttributes="Bold"  HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                            </StackLayout>
+
+                            <!-- Botón Acerca de -->
+                            <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="aboutButton" Source="acercade_icon.png" HeightRequest="32"
+                          HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="Acerca de"  FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                            </StackLayout>
+
+                            <!-- Botón Perfil -->
+                            <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="userButton" Source="perfil_icon.png" HeightRequest="32"
+                          HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="Perfil"   HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

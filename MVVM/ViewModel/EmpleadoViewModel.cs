@@ -25,7 +25,7 @@ namespace APPCOFFIE.MVVM.ViewModel
         public int Pago { get; set; }
         public string Cedula { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public string DIreccion { get; set; }
+        public string Direccion { get; set; }
         public string Password { get; set; }
         public string Rol {  get; set; }
         public EmpleadoViewModel(Page page)
@@ -82,7 +82,7 @@ namespace APPCOFFIE.MVVM.ViewModel
                     Cedula = empleado.Cedula;
                     Telefono = empleado.Telefono;
                     Estado = empleado.Estado;
-                    DIreccion = empleado.Direccion;
+                    Direccion = empleado.Direccion;
                     Correo = empleado.Correo;
                     Pago = empleado.Pago;
                     FechaNacimiento = empleado.FechaNacimiento;
@@ -148,7 +148,7 @@ namespace APPCOFFIE.MVVM.ViewModel
                     Cedula = Cedula,
                     Telefono = Telefono,
                     Estado = Estado,
-                    Direccion = DIreccion,
+                    Direccion = Direccion,
                     Correo = Correo,
                     Pago = Pago,
                     FechaNacimiento = FechaNacimiento,

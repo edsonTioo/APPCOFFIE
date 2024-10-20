@@ -2,11 +2,105 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="APPCOFFIE.MVVM.View.Empleado.HomeEmpleados"
-             Title="HomeEmpleados">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Name="PageEmpleados"
+             Title="Empleados" BackgroundColor="Pink">
+    <ContentPage.Content>
+        <Grid>
+            <!-- Definición de filas para el Grid -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Barra de Búsqueda -->
+            <SearchBar Grid.Row="0" Margin="5,5,30,0" Placeholder="Buscar Empleado..." TextColor="Black" PlaceholderColor="White"/>
+
+            <CollectionView Grid.Row="1"  ItemsSource="{Binding EmpleadoList}" BackgroundColor="Pink">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="10"  HeightRequest="240"  VerticalOptions="Center" BorderColor="LightGray" Margin="12,12,12,12" Padding="8" BackgroundColor="White" HasShadow="True">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <!-- Cliente -->
+                                <Label Text="Nombre del Empleado:" FontSize="14" TextColor="Black" FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding Nombre}" FontSize="14" Grid.ColumnSpan="2" TextColor="Black" Grid.Row="0" Grid.Column="1"/>
+                                <!-- Cédula -->
+                                <Label Text="Correo:" FontSize="14" TextColor="Black" FontAttributes="Bold" Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0"/>
+                                <Label Text="{Binding Correo}" FontSize="14" Grid.ColumnSpan="2" TextColor="Gray" Grid.Row="1" Grid.Column="1"/>
+                                <!-- Teléfono -->
+                                <Label Text="Teléfono: " FontSize="14" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
+                                <Label Text="{Binding Telefono}" FontSize="14" TextColor="Gray" Grid.Row="2" Grid.Column="1"/>
+                                <!-- Detalles y Estado -->
+                                <Label Text="Cedula:" FontSize="14" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>
+                                <Label Text="{Binding Cedula}" FontSize="14" TextColor="Gray" Grid.Row="3" HorizontalOptions="Start" Grid.Column="1"/>
+
+                                <Button Text="Eliminar" Grid.Row="3" Grid.Column="2" Margin="5" BackgroundColor="Red" Command="{Binding Path=BindingContext.EliminarCommand, Source={x:Reference PageEmpleados}}" CommandParameter="{Binding Id}" />
+                                <Button Text="Edit" Grid.Row="3" Grid.Column="3" Margin="5" BackgroundColor="Orange" Command="{Binding Path=BindingContext.EditCommand, Source={x:Reference PageEmpleados}}" CommandParameter="{Binding Id}" />
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+            <!-- Barra de navegación inferior -->
+            <ContentView Grid.Row="2"  HeightRequest="180" BackgroundColor="Pink">
+                <Grid BackgroundColor="Pink">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Button  Text="Agregar Nuevo Empleado" Command="{Binding CrearCommand}" FontFamily="Roboto-Blacl=k"  Margin="10,5,15,15" CornerRadius="15" BackgroundColor="#51B01A" CharacterSpacing="1" />
+
+                    <Frame Padding="0" HasShadow="True" HeightRequest="82" Grid.Row="1"  Margin="10,0,15,20">
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Botón Home -->
+                            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="homeButton"   Source="home_icon.png" HeightRequest="32"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="Home" FontAttributes="Bold" FontFamily="Roboto-Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                            </StackLayout>
+
+                            <!-- Botón Acerca de -->
+                            <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="aboutButton" Source="acercade_icon.png" HeightRequest="32"
+                                    HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="Acerca de" FontFamily="Roboto-Black" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                            </StackLayout>
+
+                            <!-- Botón Perfil -->
+                            <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="userButton" Source="perfil_icon.png" HeightRequest="32"
+                                 HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="Perfil" FontFamily="Roboto-Black"  HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
