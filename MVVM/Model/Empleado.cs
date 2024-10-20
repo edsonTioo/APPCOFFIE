@@ -12,9 +12,10 @@ namespace APPCOFFIE.MVVM.Model
     {
         public string Id { get; set; }  
         public string Nombre { get; set; }
-        public string Corre {  get; set; }
+        public string Correo {  get; set; }
         public string Password { get; set; }
         public string Estado { get; set; }
+        public int Telefono { get; set; }
         public int Pago { get; set; }
         public string Cedula { get; set; }
         public DateTime FechaNacimiento { get; set; }
