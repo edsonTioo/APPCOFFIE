@@ -6,7 +6,6 @@
         public string Producto { get; set; } = null!;
         public string Descripcion { get; set; } = null!;
         public int Precio_venta { get; set; }
-        //public byte Foto { get; set; }
         public string Categoria { get; set; } = null!;
     }
 }

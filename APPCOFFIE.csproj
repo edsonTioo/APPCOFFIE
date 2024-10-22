@@ -110,6 +110,15 @@
 	  <MauiXaml Update="MVVM\View\Inventario\HomeInventario.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="MVVM\View\Mesas\HomeMesas.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MVVM\View\Mesas\Pedidos.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MVVM\View\Mesas\Ventas.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="MVVM\View\Producto\CrearProducto.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

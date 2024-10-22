@@ -2,6 +2,7 @@
 using APPCOFFIE.MVVM.View.Aut;
 using APPCOFFIE.MVVM.View.Empleado;
 using APPCOFFIE.MVVM.View.Inventario;
+using APPCOFFIE.MVVM.View.Mesas;
 using APPCOFFIE.MVVM.View.Producto;
 
 namespace APPCOFFIE
@@ -11,7 +12,7 @@ namespace APPCOFFIE
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new HomeEmpleados());
+            MainPage = new NavigationPage(new HomeMesas());
         }
     }
 }

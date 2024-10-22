@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APPCOFFIE.MVVM.View.Mesas.HomeMesas"
+             Title="Mesas" BackgroundColor="Pink">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <HorizontalStackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="White" HeightRequest="60" WidthRequest="400" HorizontalOptions="CenterAndExpand" Spacing="10">
+
+
+            <Image Source="dotnet_bot.png"
+                 Margin="20,5,5,5"
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 VerticalOptions="Center"/>
+
+            <!-- Título -->
+            <Label Text="Anderson Mesmer"
+                 FontSize="Large"
+                  HorizontalOptions="Center"
+                 FontAttributes="Bold"
+                   FontFamily="Roboto-Black"
+                 TextColor="Black"
+                 VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+
+        <!-- Contenido con tarjetas desplazables -->
+        <ScrollView Grid.Row="1" Grid.ColumnSpan="3" Padding="18" Margin="0,5,0,0">
+
+            <StackLayout Spacing="10">
+                <Frame HeightRequest="200" HasShadow="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Cliente:" Grid.Row="0" Grid.Column="0" FontFamily="Roboto-Medium" FontAttributes="Bold" FontSize="18"></Label>
+                        <Label Text="N/M:" Grid.Row="0" Grid.Column="2" FontFamily="Roboto-Medium" FontAttributes="Bold" FontSize="18"></Label>
+                        <Label Text="Reserva:" Grid.Row="1" Grid.Column="0" FontFamily="Roboto-Medium" FontAttributes="Bold" FontSize="18"></Label>
+                        <ImageButton Source="icon_ver.png" Grid.Row="1" Grid.Column="2"></ImageButton>
+                        <Label Text="Estado:" Grid.Row="2" Grid.Column="0" FontFamily="Roboto-Medium" FontAttributes="Bold" FontSize="18"></Label>
+
+
+                        <ImageButton Source="icon_eliminar.png" Grid.Row="3"   Margin="1"  Grid.Column="0"></ImageButton>
+                        <Button Grid.Row="3" BackgroundColor="#FFB300" FontFamily="Roboto-Medium" Margin="1"  Text="Editar" Grid.Column="1"></Button>
+                        <Button Grid.Row="3" BackgroundColor="#3E9B1B" FontFamily="Roboto-Medium" Margin="1" Clicked="AggProducto" Text="Agregar" Grid.Column="2"></Button>
+
+                    </Grid>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
+
+
+
+        <!-- Barra inferior -->
+        <ContentView  Grid.Row="3" Grid.ColumnSpan="3" Padding="8" HeightRequest="150" BackgroundColor="Transparent">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Botón Confirmar -->
+                <Button Grid.Row="0" Text="Nueva Mesa"
+                  BackgroundColor="#3E9B1B"
+                  TextColor="White"
+                  FontSize="Large"
+                  FontFamily="Roboto-Black"
+                  CornerRadius="5"
+                  HeightRequest="50"
+                  WidthRequest="360"
+                  HorizontalOptions="FillAndExpand"
+                  Margin="0,0,0,0"
+                  BorderColor="#E4B19B"
+                  BorderWidth="1" CharacterSpacing="2"/>
+
+                <Frame Grid.Row="1" Padding="0" Margin="8,0,8,0" HasShadow="True" >
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Botón Home -->
+                        <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ImageButton x:Name="homeButton"  Source="home_icon.png" HeightRequest="32"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Home"  FontAttributes="Bold" FontFamily="Roboto-Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12" CharacterSpacing="1"/>
+                        </StackLayout>
+
+                        <!-- Botón Acerca de -->
+                        <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ImageButton x:Name="aboutButton" Source="acercade_icon.png" HeightRequest="32"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Acerca de" FontFamily="Roboto-Black" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12" CharacterSpacing="1"/>
+                        </StackLayout>
+
+                        <!-- Botón Perfil -->
+                        <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ImageButton x:Name="userButton"  Source="perfil_icon.png" HeightRequest="32"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Perfil" FontFamily="Roboto-Black"  HorizontalOptions="Center" VerticalOptions="Center" FontSize="12" CharacterSpacing="1"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ContentView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APPCOFFIE.MVVM.View.Mesas.Ventas"
+             Title="Ventas">
+    <AbsoluteLayout BackgroundColor="Pink">
+        <!-- Contenido de la página -->
+        <Grid Padding="20"
+              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+              AbsoluteLayout.LayoutFlags="All">
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*">
+
+                <!-- primera tarjeta -->
+                <Frame Grid.Row="2"
+                       CornerRadius="10"
+                       BorderColor="#f0ede8"
+                       BackgroundColor="White"
+                       Padding="10"
+                       Margin="0,10,0,5"
+                       HasShadow="True">
+                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, *">
+                        <!-- Número de mesa -->
+                        <Label Text="Número de Mesa:"
+                               VerticalOptions="Center"
+                               FontFamily="Roboto-Medium"
+                               Grid.Row="0"
+                               Grid.Column="0"/>
+                        <Entry Placeholder="Número de mesa"
+                               Keyboard="Numeric"
+                               Grid.Row="0"
+                               FontFamily="Roboto-Medium"
+                               Grid.Column="1"/>
+
+                        <!-- Total de la mesa -->
+                        <Label Text="Total de la Mesa:"
+                               VerticalOptions="Center"
+                               Grid.Row="1"
+                               FontFamily="Roboto-Medium"
+                               Grid.Column="0"/>
+                        <Entry Placeholder="0.00"
+                               Keyboard="Numeric"
+                               FontFamily="Roboto-Medium"
+                               Grid.Row="1"
+                               Grid.Column="1"/>
+
+                        <!-- Cuenta dividida -->
+                        <Button Text="Confirmar Pedido"
+                                BackgroundColor="#38B023"
+                                TextColor="White"
+                                FontSize="Medium"
+                                CornerRadius="15"
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,10"/>
+                        <Button Text="Agregar Producto"
+                                Clicked="AggPro"
+                                BackgroundColor="#E4B19B"
+                                TextColor="White"
+                                FontSize="Medium"
+                                CornerRadius="15"
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                HorizontalOptions="FillAndExpand"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Segunda tarjeta con ScrollView -->
+                <Frame Grid.Row="3"
+                       CornerRadius="10"
+                       BorderColor="#f0ede8"
+                       BackgroundColor="White"
+                       Padding="10"
+                       HeightRequest="290"
+                       Margin="0,10,0,5"
+                       HasShadow="True">
+                    <!-- ScrollView para hacer desplazable la tarjeta -->
+                    <ScrollView>
+                        <!-- CollectionView para mostrar productos -->
+                        <CollectionView Grid.Row="5"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="4"
+                                        ItemsSource="{Binding}"
+                                        Margin="0,10,0,0">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Padding="10"
+                                           Margin="0,0,0,5" 
+                                           BackgroundColor="White"
+                                           BorderColor="#f0ede8"
+                                           CornerRadius="10"
+                                           HasShadow="True">
+                                        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                                              ColumnDefinitions="Auto, *, Auto">
+
+                                            <!-- Fila 0: Imagen a la izquierda, Nombre del Producto en el centro, Imagen a la derecha -->
+                                            <Image Source="icon_caffe.png"
+                                                   Aspect="AspectFit"
+                                                   Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   HeightRequest="60"
+                                                   WidthRequest="60"
+                                                   HorizontalOptions="Start"
+                                                   VerticalOptions="Start" />
+
+                                            <Label Text="{Binding Producto}"
+                                                   FontFamily="Roboto-Medium"
+                                                   FontSize="16"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"
+                                                   Grid.Row="0"
+                                                   Grid.Column="1"
+                                                   Margin="0,0,10,0" />
+
+                                            <Button 
+                                                   Grid.Row="0"
+                                                   Grid.Column="2"
+                                                   HeightRequest="35"
+                                                   WidthRequest="35"
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="Start"
+                                                   BackgroundColor="Red"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type CollectionView}}, Path=BindingContext.EliminarProductoCommand}" 
+                                                   CommandParameter="{Binding .}"/>
+
+                                            <!-- Fila 1: Etiquetas para Cantidad y Precio -->
+                                            <Grid Grid.Row="1"
+                                                  Grid.Column="0"
+                                                  Grid.ColumnSpan="3"
+                                                  ColumnDefinitions="*, *, *">
+                                                <Label Text="Cantidad:"
+                                                       FontAttributes="Bold"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       Grid.Column="0" />
+                                                <Label Text="Precio:"
+                                                       FontAttributes="Bold"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       Grid.Column="2" />
+                                            </Grid>
+
+                                            <!-- Fila 2: Valores cargados de Cantidad y Precio -->
+                                            <Grid Grid.Row="2"
+                                                  Grid.Column="0"
+                                                  Grid.ColumnSpan="3"
+                                                  ColumnDefinitions="*, *, *">
+                                                <Entry Placeholder="0"
+                                                       FontFamily="Roboto-Medium"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       Grid.Column="0" />
+                                                <Entry Text="{Binding Precio_venta}"
+                                                       FontFamily="Roboto-Medium"
+                                                       HorizontalOptions="Center"
+                                                       IsReadOnly="True"
+                                                       VerticalOptions="Center"
+                                                       Grid.Column="2" />
+                                            </Grid>
+
+                                            <!-- Fila 3: Subtotal en la esquina inferior derecha -->
+                                            <Label Text="SubTotal"
+                                                   FontFamily="Roboto-Medium"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   TextColor="Green"
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="End"
+                                                   Grid.Row="4"
+                                                   Grid.Column="2"
+                                                   Margin="0,10,0,0" />
+                                        </Grid>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+
+                    </ScrollView>
+                </Frame>
+
+
+                <!-- Botón Confirmar -->
+                <Button Text="Finalizar Compra"
+                        BackgroundColor="#38B023"
+                        TextColor="White"
+                        FontSize="Large"
+                        CornerRadius="15"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Row="4"
+                        Margin="0,5,0,0"
+                        BorderColor="#E4B19B"
+                        BorderWidth="1"/>
+
+                <!-- Barra inferior -->
+                <ContentView Margin="0,0,0,10" WidthRequest="370" Grid.Row="5" Padding="8" HeightRequest="82" BackgroundColor="Pink">
+                    <Grid>
+                        <Frame Padding="0" HasShadow="True" IsClippedToBounds="True">
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Botón Home -->
+                                <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <ImageButton x:Name="homeButton"  Source="home_icon.png" HeightRequest="32" />
+                                    <Label Text="Home" FontAttributes="Bold" FontSize="12"/>
+                                </StackLayout>
+
+                                <!-- Botón Acerca de -->
+                                <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <ImageButton x:Name="aboutButton" Source="acercade_icon.png" HeightRequest="32" />
+                                    <Label Text="Acerca de" FontSize="12"/>
+                                </StackLayout>
+
+                                <!-- Botón Perfil -->
+                                <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <ImageButton x:Name="userButton"  Source="perfil_icon.png" HeightRequest="32" />
+                                    <Label Text="Perfil" FontSize="12"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </ContentView>
+            </Grid>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>

@@ -49,7 +49,7 @@
                               TextColor="Black"/>   
                     <!-- Botón para guardar el cliente -->
                     <Button Text="Guardar Cliente" 
-                                   Command="{Binding SaveCommand}" 
+                                   Command="{Binding StoreCommand}" 
                                    BackgroundColor="#4CAF50" 
                                    TextColor="White" 
                                    CornerRadius="10" 

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APPCOFFIE.MVVM.View.Mesas.Pedidos"
+             Title="Pedidos">
+    <AbsoluteLayout>
+        <!-- Rectángulo de fondo -->
+        <Rectangle Fill="Pink"
+                  Stroke="Pink"
+                  StrokeThickness="5"
+                  HeightRequest="805"
+                  WidthRequest="404"
+                  Rotation="35"
+                  AbsoluteLayout.LayoutBounds="-16, -3, AutoSize, AutoSize"
+                  AbsoluteLayout.LayoutFlags="PositionProportional"
+                  ZIndex="0" />
+
+        <!-- Contenido de la página -->
+        <Grid AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Título de la Página -->
+            <Label HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   BackgroundColor="White"
+                   Margin="0,10,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Lista de Platos"
+                              FontAttributes="Bold"
+                              FontSize="28"
+                              TextColor="Black"
+                              TextDecorations="Underline" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <!-- Cuadro de búsqueda -->
+            <Frame CornerRadius="10"
+                   Padding="16"
+                   HasShadow="False"
+                   BackgroundColor="White"
+                   HeightRequest="50"
+                   Margin="10,20,10,20"
+                   Grid.Row="1">
+                <Entry Placeholder="Buscar plato..."
+                       BackgroundColor="Transparent"
+                       HeightRequest="50"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="Medium"
+                       TextColor="Gray" />
+            </Frame>
+
+            <!-- Lista de productos -->
+            <ScrollView Grid.Row="2" Padding="8">
+                <CollectionView ItemsSource="{Binding Productos}"
+                                SelectionMode="None"
+                                VerticalOptions="FillAndExpand"
+                                Margin="0,10,0,10">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="15"
+                                   HeightRequest="180"
+                                   WidthRequest="350"
+                                   BorderColor="LightGray"
+                                   HasShadow="True"
+                                   Padding="10"
+                                   BackgroundColor="White"
+                                   Margin="0,5,0,5">
+                                <Frame.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="3,3"
+                                            Radius="5"
+                                            Opacity="0.2" />
+                                </Frame.Shadow>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Imagen del producto -->
+                                    <Image Source="{Binding ImagenProducto}"
+                                           Aspect="AspectFit"
+                                           HeightRequest="50"
+                                           Grid.Row="1" />
+
+                                    <!-- Nombre del producto -->
+                                    <Label Text="{Binding Producto}"
+                                           Grid.Row="2"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Start"
+                                           Margin="0,5,0,0" />
+
+                                    <!-- Precio del producto -->
+                                    <Label Text="{Binding PrecioVenta, StringFormat='{0:C}'}"
+                                           Grid.Row="3"
+                                           FontSize="14"
+                                           TextColor="Gray"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Start"
+                                           Margin="0,0,0,5" />
+
+                                    <!-- Botón para agregar el producto -->
+                                    <Button Text="Agregar Producto"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type CollectionView}}, Path=BindingContext.AgregarProductoCommand}" 
+                                            CommandParameter="{Binding .}"
+                                            Grid.Row="4"
+                                            Margin="10,20,10,10" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+
+            <!-- Botón Confirmar -->
+            <Button Text="Confirmar"
+                    BackgroundColor="#E4B19B"
+                    Command="{Binding ConfirmarCompraCommand}" 
+                    TextColor="White"
+                    FontSize="Large"
+                    CornerRadius="25"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Row="3"
+                    Margin="10,10,10,10" />
+
+            <!-- Barra inferior -->
+            <ContentView Grid.Row="5" Padding="8" HeightRequest="82" BackgroundColor="Pink">
+                <Grid>
+                    <Frame Padding="0" HasShadow="True" IsClippedToBounds="True">
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Botón Home -->
+                            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="homeButton"  Source="home_icon.png" HeightRequest="32"
+                                            HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="Home" FontAttributes="Bold" FontFamily="Roboto-Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                            </StackLayout>
+
+                            <!-- Botón Acerca de -->
+                            <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="aboutButton" Source="acercade_icon.png" HeightRequest="32"
+                                            HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="Acerca de" FontFamily="Roboto-Black" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                            </StackLayout>
+
+                            <!-- Botón Perfil -->
+                            <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="userButton" Source="perfil_icon.png" HeightRequest="32"
+                                            HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="Perfil" FontFamily="Roboto-Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </ContentView>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>

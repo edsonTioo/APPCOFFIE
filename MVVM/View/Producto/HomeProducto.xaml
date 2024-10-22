@@ -42,7 +42,7 @@
                                 <Label Text="Descripcion:" FontSize="14" TextColor="Black" FontAttributes="Bold" Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0"/>
                                 <Label Text="{Binding Descripcion}" FontSize="14" Grid.ColumnSpan="2" TextColor="Gray" Grid.Row="1" Grid.Column="1"/>
                                 <!-- Teléfono -->
-                                <Label Text="Teléfono: " FontSize="14" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
+                                <Label Text="Precio de Venta: " FontSize="14" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
                                 <Label Text="{Binding Precio_venta}" FontSize="14" TextColor="Gray" Grid.Row="2" Grid.Column="1"/>
                                 <!-- Detalles y Estado -->
                                 <Label Text="categoria:" FontSize="14" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>
